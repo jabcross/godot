@@ -82,6 +82,7 @@ public:
 
 	void add_frame(const StringName &p_anim, const Ref<Texture> &p_frame, int p_at_pos = -1);
 	int get_frame_count(const StringName &p_anim) const;
+
 	_FORCE_INLINE_ Ref<Texture> get_frame(const StringName &p_anim, int p_idx) const {
 
 		const Map<StringName, Anim>::Element *E = animations.find(p_anim);
@@ -173,6 +174,7 @@ public:
 	void play(const StringName &p_animation = StringName(), const bool p_backwards = false);
 	void stop();
 	bool is_playing() const;
+	bool is_backwards() const;
 
 	void set_animation(const StringName &p_animation);
 	StringName get_animation() const;

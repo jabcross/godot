@@ -621,6 +621,10 @@ bool AnimatedSprite::is_playing() const {
 	return playing;
 }
 
+bool AnimatedSprite::is_backwards() const {
+	return backwards;
+}
+
 float AnimatedSprite::_get_frame_duration() {
 	if (frames.is_valid() && frames->has_animation(animation)) {
 		float speed = frames->get_animation_speed(animation) * speed_scale;
@@ -654,10 +658,13 @@ void AnimatedSprite::set_animation(const StringName &p_animation) {
 	_change_notify();
 	update();
 }
+
 StringName AnimatedSprite::get_animation() const {
 
 	return animation;
 }
+
+
 
 String AnimatedSprite::get_configuration_warning() const {
 
@@ -667,6 +674,7 @@ String AnimatedSprite::get_configuration_warning() const {
 
 	return String();
 }
+
 
 void AnimatedSprite::_bind_methods() {
 
@@ -682,6 +690,7 @@ void AnimatedSprite::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("play", "anim", "backwards"), &AnimatedSprite::play, DEFVAL(StringName()), DEFVAL(false));
 	ClassDB::bind_method(D_METHOD("stop"), &AnimatedSprite::stop);
 	ClassDB::bind_method(D_METHOD("is_playing"), &AnimatedSprite::is_playing);
+	ClassDB::bind_method(D_METHOD("is_backwards"), &AnimatedSprite::is_backwards);
 
 	ClassDB::bind_method(D_METHOD("set_centered", "centered"), &AnimatedSprite::set_centered);
 	ClassDB::bind_method(D_METHOD("is_centered"), &AnimatedSprite::is_centered);
